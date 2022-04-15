@@ -1,0 +1,17 @@
+<h4>Allocations</h4>
+<hr>
+
+<p>Income: {{allocation.income}}</p>
+
+<p>Fix costs:</p>
+<div *ngFor="let fixCost of allocation.fixCosts">
+    <p>{{fixCost.fixCostName}}: {{fixCost.value}}</p>
+</div>
+
+<br>
+
+<p>Categories:</p>
+<div *ngFor="let category of allocation.categories">
+    <p>{{category.categoryName}}: {{category.budget}}</p>
+</div>
+<br>
