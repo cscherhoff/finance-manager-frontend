@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AllocationsComponent } from './allocations/allocations.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AddNewExpensesComponent } from './expenses/add-new-expenses/add-new-expenses.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AddNewExpensesComponent } from './expenses/add-new-expenses/add-new-exp
     AddNewExpensesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
