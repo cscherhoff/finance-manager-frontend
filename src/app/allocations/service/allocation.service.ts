@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { Allocation } from './Allocation';
-import { ALLOCATION_Mock } from './mockData/mock-allocations';
+import { Allocation } from '../data/Allocation';
+import { ALLOCATION_Mock } from '../mockData/mock-allocations';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { Allocation } from "../Allocation";
+import { Allocation } from "../data/Allocation";
 
 export const ALLOCATION_Mock: Allocation = {
     income: 1234.56,

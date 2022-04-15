@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Allocation } from '../Allocation';
-import { AllocationService } from '../allocation.service';
-import { ALLOCATION_Mock } from '../mockData/mock-allocations';
+import { Allocation } from './data/Allocation';
+import { AllocationService } from './service/allocation.service';
+import { ALLOCATION_Mock } from './mockData/mock-allocations';
 
 @Component({
   selector: 'app-allocations',
