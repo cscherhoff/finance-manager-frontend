@@ -10,7 +10,7 @@ import { ALLOCATION_Mock } from './mockData/mock-allocations';
 })
 export class AllocationsComponent implements OnInit {
 
-  allocation: Allocation = {income: 0.0, categories: [], fixCosts: []};
+  allocation: Allocation = {investment: 0.0, categories: [], fixCosts: []};
 
   constructor(private allocationService: AllocationService) { }
 

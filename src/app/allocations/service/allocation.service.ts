@@ -11,7 +11,7 @@ export class AllocationService {
   constructor() { }
 
   getAllocation() :Allocation {
-    let allocationReturn: Allocation = {income: 0.0, categories: [], fixCosts: []};
+    let allocationReturn: Allocation = {investment: 0.0, categories: [], fixCosts: []};
 
     of(ALLOCATION_Mock)
       .subscribe(allocation => allocationReturn = allocation);
