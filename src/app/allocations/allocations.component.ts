@@ -19,7 +19,7 @@ export class AllocationsComponent implements OnInit {
   }
 
   getAllocation(): void {
-    this.allocation = this.allocationService.getAllocation();
+   this.allocationService.getAllocation()
+    .subscribe(allocationResponse => this.allocation = allocationResponse);
   }
-
 }
