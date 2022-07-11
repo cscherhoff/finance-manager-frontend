@@ -4,9 +4,17 @@
 <p>Investment: {{allocation.investment}}</p>
 
 <p>Fix costs:</p>
-<div *ngFor="let fixCost of allocation.fixCosts">
-    <p>{{fixCost.fixCostName}}: {{fixCost.value}}</p>
+<div *ngFor="let fixCost of allocation.fixCosts; index as i">
+    <ng-container [ngTemplateOutlet]="fixCost.updating ? updating : notUpdating" [ngTemplateOutletContext]="{fixCost:fixCost, i:i}"></ng-container>
 </div>
+
+<ng-template #notUpdating let-fixCost="fixCost" let-i="i">
+    {{fixCost.fixCostName}}: {{fixCost.value}} <button type="button" (click)="updateAllocation(i)">Change</button>
+</ng-template>
+
+<ng-template #updating let-fixCost="fixCost" let-i="i">
+    <input type="number" value={{fixCost.value}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateAllocation(i)">Update</button>
+</ng-template>
 
 <br>
 
@@ -15,3 +23,5 @@
     <p>{{category.categoryName}}: {{category.budget}}</p>
 </div>
 <br>
+<hr>
+<button type="submit" (click)="updateAllocation(4)">Update allocations</button>

@@ -20,6 +20,10 @@ export class AllocationService {
   } */
 
   getAllocation(): Observable<Allocation> {
-    return of(ALLOCATION_Mock).pipe(delay(15_000));
+    return of(ALLOCATION_Mock).pipe(delay(500));
+  }
+
+  updateAllocation(allocation: Allocation): void {
+    console.log("The updated allocation " + JSON.stringify(allocation));
   }
 }
