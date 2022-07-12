@@ -1,0 +1,30 @@
+<p>investment-transaction works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>DepotName</th>
+            <th>type</th>
+            <th>securityName</th>
+            <th>number</th>
+            <th>price</th>
+            <th>expenses</th>
+            <th>totalPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transactionLoop of transaction">
+            <td>{{transactionLoop.date | date:'dd.MM.yyyy'}}</td>
+            <td>{{transactionLoop.depotName}}</td>
+            <td>{{transactionLoop.type}}</td>
+            <td>{{transactionLoop.securityName}}</td>
+            <td>{{transactionLoop.number}}</td>
+            <td>{{transactionLoop.price}}</td>
+            <td>{{transactionLoop.expenses}}</td>
+            <td>{{transactionLoop.totalPrice}}</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+

@@ -1,0 +1,23 @@
+<p>investment-depot-entry works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>DepotName</th>
+            <th>securityName</th>
+            <th>number</th>
+            <th>single price</th>
+            <th>dividend</th>
+            <th>costs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let depotEntryLoop of depotEntries">
+            <td>{{depotEntryLoop.depotName}}</td>
+            <td>{{depotEntryLoop.securityName}}</td>
+            <td>{{depotEntryLoop.number}}</td>
+            <td>{{depotEntryLoop.singlePrice}}</td>
+            <td>{{depotEntryLoop.dividend}}</td>
+            <td>{{depotEntryLoop.costs}}</td>
+        </tr>
+    </tbody>
+</table>

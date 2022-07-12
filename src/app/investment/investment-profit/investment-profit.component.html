@@ -1,0 +1,21 @@
+<p>investment-profit works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>securityName</th>
+            <th>netAbsoluteProfit</th>
+            <th>grossAbsoluteProfit</th>
+            <th>netPercentageProfit</th>
+            <th>grossPercentageProfit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profitLoop of profits">
+            <td>{{profitLoop.securityName}}</td>
+            <td>{{profitLoop.netAbsoluteProfit}}</td>
+            <td>{{profitLoop.grossAbsoluteProfit}}</td>
+            <td>{{profitLoop.netPercentageProfit}}</td>
+            <td>{{profitLoop.grossPercentageProfit}}</td>
+        </tr>
+    </tbody>
+</table>
