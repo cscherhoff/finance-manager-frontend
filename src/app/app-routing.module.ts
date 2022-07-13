@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'investment/profits', component: InvestmentProfitComponent
   },
   {
-    path: '', redirectTo: 'investment/depotEntries', pathMatch: 'full'
+    path: '', redirectTo: 'addNewExpense', pathMatch: 'full'
   }
 ]
 

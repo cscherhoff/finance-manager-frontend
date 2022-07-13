@@ -1,1 +1,24 @@
 <p>add-new-expenses works!</p>
+<hr>
+<form>
+    <label>Date</label>
+    <input [(ngModel)]="formData.date" type="text" name="date">
+    <br>
+    <label>Category</label>
+    <select [(ngModel)]="formData.category" (change)="categorySelected()" name="category">
+        <option *ngFor="let category of categories">{{category.categoryName}}</option>
+    </select>
+    <br>
+    <label>Article</label>
+    <select [(ngModel)]="formData.article" (change)="printValue()" name="article">
+        <option *ngFor="let article of articles">{{article.articleName}}</option>
+    </select>
+    <br>
+    <label>Amount</label>
+    <input [(ngModel)]="formData.amount" type="text" name="amount">
+    <br>
+    <label>Price</label>
+    <input [(ngModel)]="formData.price" type="text" name="price">
+    <br>
+    <button type="submit">Login</button>
+</form>

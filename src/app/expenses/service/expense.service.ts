@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
+import { Category } from '../data/category';
 import { Expense } from '../data/Expense';
+import { CATEGORIES_MOCK } from '../mockData/mock-categories';
 import { EXPENSE_MOCK } from '../mockData/mock-expense';
 
 @Injectable({
@@ -10,9 +12,11 @@ export class ExpenseService {
 
   constructor() { }
 
-  getExpenses(): Expense[] {
-    let expenseReturn: Expense[] = [];
-    of(EXPENSE_MOCK).subscribe(expense => expenseReturn=expense);
-    return expenseReturn;
+  getExpenses(): Observable<Expense[]> {
+    return of(EXPENSE_MOCK).pipe(delay(7000));
+  }
+
+  getCategories(): Observable<Category[]> {
+    return of(CATEGORIES_MOCK).pipe(delay(500));
   }
 }
