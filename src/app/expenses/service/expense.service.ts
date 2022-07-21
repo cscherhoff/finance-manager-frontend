@@ -19,4 +19,8 @@ export class ExpenseService {
   getCategories(): Observable<Category[]> {
     return of(CATEGORIES_MOCK).pipe(delay(500));
   }
+
+  postNewExpense(expenseJson: string): void {
+    console.log('Post expense: ' + expenseJson);
+  }
 }

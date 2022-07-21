@@ -10,20 +10,19 @@ export class AllocationService {
 
   constructor() { }
 
-  /* getAllocation_old() :Allocation {
-    let allocationReturn: Allocation = {investment: 0.0, categories: [], fixCosts: []};
-
-    of(ALLOCATION_Mock)
-      .subscribe(allocation => allocationReturn = allocation);
-    
-      return allocationReturn;
-  } */
-
   getAllocation(): Observable<Allocation> {
     return of(ALLOCATION_Mock).pipe(delay(500));
   }
 
   updateAllocation(allocation: Allocation): void {
     console.log("The updated allocation " + JSON.stringify(allocation));
+  }
+
+  getIncome(): Observable<number> {
+    return of(1234.56).pipe(delay(5000));
+  }
+
+  postIncome(income: number): void {
+    console.log('Posted income' + income);
   }
 }

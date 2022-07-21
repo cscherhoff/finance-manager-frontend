@@ -1,5 +1,5 @@
 export interface FixCost {
     fixCostName: string;
-    value: number;
+    amount: number;
     updating?: boolean;
 }
