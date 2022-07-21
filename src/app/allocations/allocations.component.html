@@ -7,25 +7,36 @@
 <div *ngFor="let fixCost of allocation.fixCosts; index as i">
     <ng-container [ngTemplateOutlet]="fixCost.updating ? updating : notUpdating" [ngTemplateOutletContext]="{fixCost:fixCost, i:i}"></ng-container>
 </div>
+<div>Sum: {{fixCostSum}}</div>
 <div *ngIf="addFixcost">
     <input [(ngModel)]="newFixcost.fixCostName" type="text" placeholder="Name of the new fixcost"/> <input [(ngModel)]="newFixcost.amount" type="number"/> <button type="button" (click)="submitNewFixcost()">Ok</button>
 </div>
 <button type="button" (click)="addNewFixcost()">Add new fixcost</button>
 
 <ng-template #notUpdating let-fixCost="fixCost" let-i="i">
-    <label>{{fixCost.fixCostName}}: {{fixCost.amount}} </label> <button type="button" (click)="updateAllocation(i)">Change</button>
+    <label>{{fixCost.fixCostName}}: {{fixCost.amount}} </label> <button type="button" (click)="updateFixcost(i)">Change</button>
 </ng-template>
 
 <ng-template #updating let-fixCost="fixCost" let-i="i">
-    <input type="number" value={{fixCost.value}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateAllocation(i)">Ok</button>
+    <input type="number" value={{fixCost.value}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateFixcost(i)">Ok</button>
 </ng-template>
 
 <br>
 
 <p>Categories:</p>
-<div *ngFor="let category of allocation.categories">
-    <label>{{category.categoryName}}: {{category.budget}}</label>
+<div *ngFor="let category of allocation.categories; index as i">
+    <ng-container [ngTemplateOutlet]="category.updating ? updatingCategory : notUpdatingCategory" [ngTemplateOutletContext]="{category:category, i:i}"></ng-container>
 </div>
-<br>
-<hr>
-<button type="submit" (click)="updateAllocation(4)">Update allocations</button>
+<div>Sum: {{categorySum}}</div>
+<div *ngIf="addCategory">
+    <input [(ngModel)]="newCategory.categoryName" type="text" placeholder="Name of the new category"/> <input [(ngModel)]="newCategory.budget" type="number"/> <button type="button" (click)="submitNewCategory()">Ok</button>
+</div>
+<button type="submit" (click)="addNewCategory()">Add new category</button>
+
+<ng-template #notUpdatingCategory let-category="category" let-i="i">
+    <label>{{category.categoryName}}: {{category.budget}} </label> <button type="button" (click)="updateCategory(i)">Change</button>
+</ng-template>
+
+<ng-template #updatingCategory let-category="category" let-i="i">
+    <input type="number" value={{category.budget}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateCategory(i)">Ok</button>
+</ng-template>
