@@ -23,6 +23,6 @@ export class InvestmentService {
   }
 
   getProfits(): Observable<Profit[]> {
-    return of(PROFIT_MOCK).pipe(delay(15000));
+    return of(PROFIT_MOCK).pipe(delay(1500));
   }
 }

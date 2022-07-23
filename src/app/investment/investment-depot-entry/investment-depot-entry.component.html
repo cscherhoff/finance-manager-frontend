@@ -3,6 +3,7 @@
     <thead>
         <tr>
             <th>DepotName</th>
+            <th>ISIN</th>
             <th>securityName</th>
             <th>number</th>
             <th>single price</th>
@@ -13,6 +14,7 @@
     <tbody>
         <tr *ngFor="let depotEntryLoop of depotEntries">
             <td>{{depotEntryLoop.depotName}}</td>
+            <td>{{depotEntryLoop.isin}}</td>
             <td>{{depotEntryLoop.securityName}}</td>
             <td>{{depotEntryLoop.number}}</td>
             <td>{{depotEntryLoop.singlePrice}}</td>

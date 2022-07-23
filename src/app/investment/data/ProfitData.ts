@@ -1,4 +1,5 @@
 export interface Profit {
+    isin: string;
     securityName: string;
     netAbsoluteProfit: number;
     grossAbsoluteProfit: number;

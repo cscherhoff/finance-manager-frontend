@@ -2,6 +2,7 @@
 <table>
     <thead>
         <tr>
+            <th>ISIN</th>
             <th>securityName</th>
             <th>netAbsoluteProfit</th>
             <th>grossAbsoluteProfit</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let profitLoop of profits">
+            <td>{{profitLoop.isin}}</td>
             <td>{{profitLoop.securityName}}</td>
             <td>{{profitLoop.netAbsoluteProfit}}</td>
             <td>{{profitLoop.grossAbsoluteProfit}}</td>
