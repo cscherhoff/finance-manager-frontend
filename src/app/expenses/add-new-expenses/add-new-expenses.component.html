@@ -2,7 +2,7 @@
 <hr>
 <form>
     <label>Date</label>
-    <input [(ngModel)]="formData.date" type="date" name="date">
+    <input [(ngModel)]="formData.date" type="date" name="date"/>
     <br>
     <select #categoryselect (change)="selectedCategory(categoryselect.value)">
         <option *ngFor="let category of categories">{{category.categoryName}}</option>
@@ -12,13 +12,13 @@
     <select #articleselect (change)="selectedArticle(articleselect.value)" name="article">
         <option *ngFor="let article of articles">{{article.articleName}}</option>
     </select>
-    <input [(ngModel)]="formData.article" type="text" name="articleText" >
+    <input [(ngModel)]="formData.article" type="text" name="articleText" />
     <br>
     <label>Amount</label>
-    <input [(ngModel)]="formData.amount" type="text" name="amount">
+    <input [(ngModel)]="formData.amount" type="text" name="amount"/>
     <br>
     <label>Price</label>
-    <input [(ngModel)]="formData.price" type="text" name="price">
+    <input [(ngModel)]="formData.price" type="text" name="price"/>
     <br>
     <button type="submit" (click)="postExpense(false)">Save without override</button>
     <button type="submit" (click)="postExpense(true)">Save and override</button>
