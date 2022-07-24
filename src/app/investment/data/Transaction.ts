@@ -1,11 +1,11 @@
 export interface Transaction {
     depotName: string;
-    date: Date;
+    date: string;
     type: string;
     isin: string;
     securityName: string;
-    price: number;
     number: number;
+    price: number;
     expenses: number;
-    totalPrice: number;
+    totalPrice: string;
 }

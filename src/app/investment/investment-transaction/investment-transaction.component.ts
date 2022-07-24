@@ -9,7 +9,7 @@ import {InvestmentService} from '../service/investment.service';
 })
 export class InvestmentTransactionComponent implements OnInit {
 
-  transaction: Transaction[] = [{depotName:"", date: new Date("2000-01-01"),  type: "",  isin:"XX01234567890",securityName: "",  price: 0,  number: 0, expenses: 0, totalPrice: 0}];
+  transaction: Transaction[] = [{depotName:"", date: "2000-01-01",  type: "",  isin:"XX01234567890",securityName: "",  price: 0,  number: 0, expenses: 0, totalPrice: '0'}];
 
   constructor(private investmentService: InvestmentService) { }
 

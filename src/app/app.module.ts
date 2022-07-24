@@ -11,6 +11,8 @@ import { InvestmentTransactionComponent } from './investment/investment-transact
 import { InvestmentComponent } from './investment/investment.component';
 import { InvestmentDepotEntryComponent } from './investment/investment-depot-entry/investment-depot-entry.component';
 import { InvestmentProfitComponent } from './investment/investment-profit/investment-profit.component';
+import { AddNewTransactionComponent } from './investment/add-new-transaction/add-new-transaction.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,15 @@ import { InvestmentProfitComponent } from './investment/investment-profit/invest
     InvestmentTransactionComponent,
     InvestmentComponent,
     InvestmentDepotEntryComponent,
-    InvestmentProfitComponent
+    InvestmentProfitComponent,
+    AddNewTransactionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

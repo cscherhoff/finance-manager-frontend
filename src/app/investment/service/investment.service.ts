@@ -5,7 +5,7 @@ import { Profit } from '../data/ProfitData';
 import { Transaction } from '../data/Transaction';
 import { DEPOT_ENTRIES_MOCK } from '../mockData/mock-depotEntries';
 import { PROFIT_MOCK } from '../mockData/mock-profits';
-import { TRANSACTION_MOCK } from '../mockData/mock-transactions';
+import { ISIN_MOCK, TRANSACTION_MOCK } from '../mockData/mock-transactions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ import { TRANSACTION_MOCK } from '../mockData/mock-transactions';
 export class InvestmentService {
 
   constructor() { }
+
+  getIsins(): Observable<string[]> {
+    return of(ISIN_MOCK).pipe(delay(5000));
+  }
 
   getTransactions(): Observable<Transaction[]> {
     return of(TRANSACTION_MOCK).pipe(delay(500));
@@ -24,5 +28,9 @@ export class InvestmentService {
 
   getProfits(): Observable<Profit[]> {
     return of(PROFIT_MOCK).pipe(delay(1500));
+  }
+
+  postTransaction(transaction: Transaction): void {
+    console.log('Post transaction: ' + JSON.stringify(transaction));
   }
 }

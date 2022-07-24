@@ -6,14 +6,15 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { InvestmentTransactionComponent } from './investment/investment-transaction/investment-transaction.component';
 import {InvestmentDepotEntryComponent} from './investment/investment-depot-entry/investment-depot-entry.component';
 import {InvestmentProfitComponent} from './investment/investment-profit/investment-profit.component';
+import {AddNewTransactionComponent} from './investment/add-new-transaction/add-new-transaction.component';
 
 const routes: Routes = [
   {
     path: 'allocation', component: AllocationsComponent
   },
-  // {
-  //   path: 'updateAllocation', component: UpdateAllocationsComponent
-  // },
+  {
+    path: 'investment/transaction/newTransaction', component: AddNewTransactionComponent
+  },
   {
     path: 'expenses', component: ExpensesComponent
   },
