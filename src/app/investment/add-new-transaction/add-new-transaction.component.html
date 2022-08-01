@@ -10,10 +10,12 @@
     </select>
     <br>
     <select #typeSelected (change)="selectedType(typeSelected.value)">
-        <option>Transfer</option>
+        <option>TransferToDepot</option>
+        <option>TransferFromDepot</option>
         <option>Buy</option>
         <option>Sell</option>
         <option>Dividend</option>
+        <option>DepotCost</option>
     </select>
     <br>
     <select #isinSelected (change)="selectedIsin(isinSelected.value)">4
