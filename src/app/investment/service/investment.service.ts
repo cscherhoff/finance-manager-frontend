@@ -5,6 +5,7 @@ import { DepotEntry } from '../data/DepotEntryData';
 import { Profit } from '../data/ProfitData';
 import { Transaction } from '../data/Transaction';
 import { DEPOT_ENTRIES_MOCK } from '../mockData/mock-depotEntries';
+import { Security } from '../data/Security';
 import { PROFIT_MOCK } from '../mockData/mock-profits';
 import { ISIN_MOCK, TRANSACTION_MOCK } from '../mockData/mock-transactions';
 
@@ -19,13 +20,13 @@ export class InvestmentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getIsins(): Observable<string[]> {
-    return of(ISIN_MOCK).pipe(delay(5000));
-  }
+  // getIsins(): Observable<string[]> {
+  //   return of(ISIN_MOCK).pipe(delay(5000));
+  // }
 
   getTransactions(): Observable<Transaction[]> {
-
-    return of(TRANSACTION_MOCK).pipe(delay(500));
+    return this.httpClient.get<Transaction[]>('http://localhost:30005/investments/user/1/transactions');
+    // return of(TRANSACTION_MOCK).pipe(delay(500));
   }
 
   getDepotEntries(): Observable<DepotEntry[]> {
@@ -38,8 +39,18 @@ export class InvestmentService {
     return of(PROFIT_MOCK).pipe(delay(1500));
   }
 
+  getIsinSecurityName(): Observable<Security[]> {
+    return this.httpClient.get<Security[]>('http://localhost:30005/investments/user/0/securities');
+    // return of(
+    //   new Map<string, string>([
+    //     ["US1234567890", "Fielmann"],
+    //     ["FR0123456789", "Apple"]
+    // ])
+    // ).pipe(delay(8000));
+  }
+
   postTransaction(transaction: Transaction): void {
-    this.httpClient.post('http://localhost:30005/investments/user/1/transaction', JSON.stringify(transaction), this.httpOptions)
+    this.httpClient.post('http://localhost:30005/investments/user/1234567/transactions', JSON.stringify(transaction), this.httpOptions)
       .subscribe(response => console.log(response));
     console.log('Post transaction: ' + JSON.stringify(transaction));
   }

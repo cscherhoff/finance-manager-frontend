@@ -22,6 +22,11 @@ export class AddNewTransactionComponent implements OnInit {
     totalPrice: '0'
   }
 
+  isinNameMap:Map<string, string> = new Map<string, string>([
+    ["US1234567890", "Fielmann"],
+    ["FR0123456789", "Apple"]
+]);
+
   isinArray: string[] = [];
 
   constructor(private investmentService: InvestmentService, private datepipe: DatePipe) { }
@@ -33,6 +38,7 @@ export class AddNewTransactionComponent implements OnInit {
 
   selectedIsin(selectedIsin: string) {
     this.formData.isin = selectedIsin;
+    this.formData.securityName = this.isinNameMap.get(selectedIsin)!;
   }
 
   selectedDepotName(selectedDepotName: string) {
@@ -46,13 +52,17 @@ export class AddNewTransactionComponent implements OnInit {
   }
 
   getIsinArray(): void {
-    this.investmentService.getIsins()
+    this.investmentService.getIsinSecurityName()
       .subscribe(isinResponse => {
-        this.isinArray = isinResponse;
+
+        isinResponse.forEach((security) => {
+          this.isinNameMap.set(security.isin, security.securityName);
+          this.isinArray.push(security.isin);
+        });
         if(isinResponse.length>0) {
-          this.formData.isin = isinResponse[0];
+          this.selectedIsin(isinResponse[0].isin);
         }
-        }
+      }
       );
   }
 
