@@ -7,6 +7,7 @@ import { Transaction } from '../data/Transaction';
 import { Security } from '../data/Security';
 import { PROFIT_MOCK } from '../mockData/mock-profits';
 import { InvestmentInformation } from '../data/InvestmentInformation';
+import { environment } from 'src/app/environment';
 
 @Injectable({
   providedIn: 'root'
