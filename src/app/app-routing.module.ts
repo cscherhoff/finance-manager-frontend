@@ -7,6 +7,7 @@ import { InvestmentTransactionComponent } from './investment/investment-transact
 import {InvestmentDepotEntryComponent} from './investment/investment-depot-entry/investment-depot-entry.component';
 import {InvestmentProfitComponent} from './investment/investment-profit/investment-profit.component';
 import {AddNewTransactionComponent} from './investment/add-new-transaction/add-new-transaction.component';
+import { InvestmentInformationComponent } from './investment/investment-information/investment-information.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: 'investment/profits', component: InvestmentProfitComponent
+  },
+  {
+    path: 'investment/information', component: InvestmentInformationComponent
   },
   {
     path: '', redirectTo: 'addNewExpense', pathMatch: 'full'

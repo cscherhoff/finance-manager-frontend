@@ -14,6 +14,7 @@ import { InvestmentDepotEntryComponent } from './investment/investment-depot-ent
 import { InvestmentProfitComponent } from './investment/investment-profit/investment-profit.component';
 import { AddNewTransactionComponent } from './investment/add-new-transaction/add-new-transaction.component';
 import { DatePipe } from '@angular/common';
+import { InvestmentInformationComponent } from './investment/investment-information/investment-information.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DatePipe } from '@angular/common';
     InvestmentComponent,
     InvestmentDepotEntryComponent,
     InvestmentProfitComponent,
-    AddNewTransactionComponent
+    AddNewTransactionComponent,
+    InvestmentInformationComponent
   ],
   imports: [
     BrowserModule,

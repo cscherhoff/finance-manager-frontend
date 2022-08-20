@@ -8,6 +8,7 @@ import { DEPOT_ENTRIES_MOCK } from '../mockData/mock-depotEntries';
 import { Security } from '../data/Security';
 import { PROFIT_MOCK } from '../mockData/mock-profits';
 import { ISIN_MOCK, TRANSACTION_MOCK } from '../mockData/mock-transactions';
+import { InvestmentInformation } from '../data/InvestmentInformation';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,9 @@ export class InvestmentService {
     this.httpClient.post('http://localhost:30005/investments/user/1234567/transactions', JSON.stringify(transaction), this.httpOptions)
       .subscribe(response => console.log(response));
     console.log('Post transaction: ' + JSON.stringify(transaction));
+  }
+
+  getInvestmentInformation(): Observable<InvestmentInformation> {
+    return this.httpClient.get<InvestmentInformation>('http://localhost:30005/investments/user/1234567/invested');
   }
 }
