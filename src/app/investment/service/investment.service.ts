@@ -20,11 +20,11 @@ export class InvestmentService {
   constructor(private httpClient: HttpClient) { }
 
   getTransactions(): Observable<Transaction[]> {
-    return this.httpClient.get<Transaction[]>('http://localhost:30005/investments/user/1/transactions');
+    return this.httpClient.get<Transaction[]>('http://localhost:' + environment.backendPort + '/investments/user/1/transactions');
   }
 
   getDepotEntries(): Observable<DepotEntry[]> {
-    return this.httpClient.get<DepotEntry[]>('http://localhost:30005/investments/user/1/depotEntries');
+    return this.httpClient.get<DepotEntry[]>('http://localhost:' + environment.backendPort + '/investments/user/1/depotEntries');
   }
 
   getProfits(): Observable<Profit[]> {
@@ -32,16 +32,16 @@ export class InvestmentService {
   }
 
   getIsinSecurityName(): Observable<Security[]> {
-    return this.httpClient.get<Security[]>('http://localhost:30005/investments/user/0/securities');
+    return this.httpClient.get<Security[]>('http://localhost:' + environment.backendPort + '/investments/user/0/securities');
   }
 
   postTransaction(transaction: Transaction): void {
-    this.httpClient.post('http://localhost:30005/investments/user/1234567/transactions', JSON.stringify(transaction), this.httpOptions)
+    this.httpClient.post('http://localhost:' + environment.backendPort + '/investments/user/1234567/transactions', JSON.stringify(transaction), this.httpOptions)
       .subscribe(response => console.log(response));
     console.log('Post transaction: ' + JSON.stringify(transaction));
   }
 
   getInvestmentInformation(): Observable<InvestmentInformation> {
-    return this.httpClient.get<InvestmentInformation>('http://localhost:30005/investments/user/1234567/invested');
+    return this.httpClient.get<InvestmentInformation>('http://localhost:' + environment.backendPort + '/investments/user/1234567/invested');
   }
 }
