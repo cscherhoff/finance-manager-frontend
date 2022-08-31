@@ -1,3 +1,4 @@
 export const environment = {
-    backendPort: 8068
+    backendPortInvestment: 30005,
+    backendPortAllocation: 30007
 };

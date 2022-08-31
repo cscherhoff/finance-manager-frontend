@@ -16,21 +16,21 @@ export class AllocationService {
   constructor(private httpClient: HttpClient) { }
 
   getAllocation(): Observable<Allocation> {
-    return this.httpClient.get<Allocation>('http://localhost:' + environment.backendPort + '/allocation/user/3');
+    return this.httpClient.get<Allocation>('http://localhost:' + environment.backendPortAllocation + '/allocation/user/3');
   }
 
   updateAllocation(allocation: Allocation): void {
-    this.httpClient.put('http://localhost:' + environment.backendPort + '/allocation/user/3',JSON.stringify(allocation), this.httpOptions)
+    this.httpClient.put('http://localhost:' + environment.backendPortAllocation + '/allocation/user/3',JSON.stringify(allocation), this.httpOptions)
       .subscribe(response => console.log(response));
     console.log("The updated allocation " + JSON.stringify(allocation));
   }
 
   getIncome(): Observable<number> {
-    return this.httpClient.get<number>('http://localhost:' + environment.backendPort + '/income/user/3');
+    return this.httpClient.get<number>('http://localhost:' + environment.backendPortAllocation + '/income/user/3');
   }
 
   postIncome(income: number): void {
-    this.httpClient.post('http://localhost:' + environment.backendPort + '/income/user/3', income, this.httpOptions)
+    this.httpClient.post('http://localhost:' + environment.backendPortAllocation + '/income/user/3', income, this.httpOptions)
       .subscribe(response => console.log(response));
     console.log('Posted income' + income);
   }
