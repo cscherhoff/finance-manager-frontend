@@ -1,0 +1,18 @@
+<p>auth works!</p>
+<hr>
+<div>
+    <form>
+        <div>
+            <label for="email">Username </label>
+            <input [(ngModel)]="formData.username" type="email" id="email" name="username"/>
+        </div>
+        <div>
+            <label for="password">Password </label>
+            <input [(ngModel)]="formData.password" type="password" id="password" name="password"/>
+        </div>
+        <div>
+            <button type="submit" (click)="logIn()">Log in</button>
+            <button type="submit" (click)="signUp()">Sign up</button>
+        </div>
+    </form>
+</div>

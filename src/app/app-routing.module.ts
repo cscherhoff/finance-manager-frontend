@@ -8,8 +8,12 @@ import {InvestmentDepotEntryComponent} from './investment/investment-depot-entry
 import {InvestmentProfitComponent} from './investment/investment-profit/investment-profit.component';
 import {AddNewTransactionComponent} from './investment/add-new-transaction/add-new-transaction.component';
 import { InvestmentInformationComponent } from './investment/investment-information/investment-information.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
+  {
+    path: 'login', component: AuthComponent
+  },
   {
     path: 'allocation', component: AllocationsComponent
   },
