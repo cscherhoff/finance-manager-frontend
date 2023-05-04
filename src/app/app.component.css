@@ -1,0 +1,44 @@
+/* Navigationsbereich gestalten */
+.site-nav { 
+    position: sticky; 
+    top: 0; 
+    box-shadow: 0 2px 6px rgb(51,51,51,0.3); 
+  
+    background-color: #333;
+    color: white; 
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem; 
+  }
+  
+  /* Navigationsliste ohne Abstände */
+  ul {
+    display: flex;
+    padding: 0; 
+    margin: 0; 
+    }
+  
+  /* Listenelemente nebeneinander und ohne Marker */
+  li { 
+      display: inline; 
+      list-style-type: none;
+      margin-right: 0.5rem;
+      border: 1px solid #ec3;
+      padding: 4px;
+    }
+  
+  /* Navigationslinks ohne Unterstreichung */
+  a {
+      color: white; 
+      text-decoration: none; 
+  }
+  
+  /* Aktuellen Menüpunkt unterstreichen */
+  .current a { 
+    text-decoration: underline; 
+  }
+
+  /* Linkzustände für den Inhaltsbereich */
+a:link { color: #ec3; }
+a:visited { color: #3ad; } 
+a:hover, .site-content a:focus { color: #f63; } 
+a:active { color: #ec3; }  
