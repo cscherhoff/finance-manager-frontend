@@ -25,7 +25,7 @@ export class AddNewTransactionComponent implements OnInit {
   isinNameMap:Map<string, string> = new Map<string, string>([
     ["US1234567890", "Fielmann"],
     ["FR0123456789", "Apple"]
-]);
+  ]);
 
   isinArray: string[] = [];
 
