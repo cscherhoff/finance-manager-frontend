@@ -10,7 +10,9 @@ import { AllocationService } from './service/allocation.service';
   styleUrls: ['./allocations.component.css']
 })
 export class AllocationsComponent implements OnInit {
-  
+
+  isUpdatingIncome: boolean = false;
+  isUpdatingInvestment: boolean = false;
   isUpdating: boolean = false;
   addFixcost: boolean = false;
   addCategory: boolean = false;
@@ -48,6 +50,7 @@ export class AllocationsComponent implements OnInit {
 
   postIncome(): void {
     this.allocationService.postIncome(this.income);
+    this.isUpdatingIncome = false;
   }
 
   updateFixcost(i: number) {
@@ -94,6 +97,10 @@ export class AllocationsComponent implements OnInit {
     this.newCategory.categoryName = '';
     this.newCategory.budget = 0;
     this.calculateCategorySum();
+  }
+
+  submitAllocation(): void {
+    this.allocationService.updateAllocation(this.allocation);
   }
 
   calculateFixCostSum() {

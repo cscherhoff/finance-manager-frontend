@@ -1,7 +1,19 @@
 <h4>Allocations</h4>
 <hr>
-<p>Income: {{income}}</p>
-<p>Investment: {{allocation.investment}}</p>
+
+<div>
+<input [(ngModel)]="income" type="number" disabled="{{!isUpdatingIncome}}"/>
+<button type="button" (click)="isUpdatingIncome = true" *ngIf="!isUpdatingIncome">Change income</button>
+<button type="button" (click)="postIncome()" *ngIf="isUpdatingIncome">Save</button>
+</div>
+
+<div>
+<input [(ngModel)]="allocation.investment" type="number" disabled="{{!isUpdatingInvestment}}"/>
+<button type="button" (click)="isUpdatingInvestment = true" *ngIf="!isUpdatingInvestment">Change investment amount</button>
+<button type="button" (click)="isUpdatingInvestment = false" *ngIf="isUpdatingInvestment">Save</button>
+</div>
+
+<button type="button" (click)="submitAllocation()">Save allocation</button>
 
 <p>Fix costs:</p>
 <div *ngFor="let fixCost of allocation.fixCosts; index as i">
@@ -29,7 +41,9 @@
 </div>
 <div>Sum: {{categorySum}}</div>
 <div *ngIf="addCategory">
-    <input [(ngModel)]="newCategory.categoryName" type="text" placeholder="Name of the new category"/> <input [(ngModel)]="newCategory.budget" type="number"/> <button type="button" (click)="submitNewCategory()">Ok</button>
+    <input [(ngModel)]="newCategory.categoryName" type="text" placeholder="Name of the new category"/>
+    <input [(ngModel)]="newCategory.budget" type="number"/>
+    <button type="button" (click)="submitNewCategory()">Ok</button>
 </div>
 <button type="submit" (click)="addNewCategory()">Add new category</button>
 
@@ -40,3 +54,5 @@
 <ng-template #updatingCategory let-category="category" let-i="i">
     <input type="number" value={{category.budget}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateCategory(i)">Ok</button>
 </ng-template>
+
+<p>Total sum: {{(fixCostSum + categorySum + allocation.investment).toFixed(2)}}</p>

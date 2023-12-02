@@ -22,7 +22,7 @@ export class AllocationService {
   updateAllocation(allocation: Allocation): void {
     this.httpClient.put('http://localhost:' + environment.backendPortAllocation + '/allocation/user/3',JSON.stringify(allocation), this.httpOptions)
       .subscribe(response => console.log(response));
-    console.log("The updated allocation " + JSON.stringify(allocation));
+    console.log('The updated allocation: ' + JSON.stringify(allocation));
   }
 
   getIncome(): Observable<number> {
@@ -30,8 +30,8 @@ export class AllocationService {
   }
 
   postIncome(income: number): void {
-    this.httpClient.post('http://localhost:' + environment.backendPortAllocation + '/income/user/3', income, this.httpOptions)
+    this.httpClient.put('http://localhost:' + environment.backendPortAllocation + '/income/user/3', income, this.httpOptions)
       .subscribe(response => console.log(response));
-    console.log('Posted income' + income);
+    console.log('Posted income: ' + income);
   }
 }
