@@ -13,7 +13,7 @@ export class AddNewTransactionComponent implements OnInit {
   formData: Transaction = {
     depotName: 'Trade Republic',
     date: this.datepipe.transform(new Date(), 'yyyy-MM-dd')!,
-    type: 'Transfer',
+    type: 'TransferToDepot',
     isin: '',
     securityName: '',
     number: 0,
@@ -21,6 +21,12 @@ export class AddNewTransactionComponent implements OnInit {
     expenses: 0,
     totalPrice: '0'
   }
+
+  isinInputDisabled: boolean = false;
+  securityNameInputDisabled: boolean = false;
+  numberInputDisabled: boolean = false;
+  priceInputDisabled: boolean = false;
+  expenseInputDisabled: boolean = false;
 
   isinNameMap:Map<string, string> = new Map<string, string>([
     ["US1234567890", "Fielmann"],
@@ -34,6 +40,7 @@ export class AddNewTransactionComponent implements OnInit {
   ngOnInit(): void {
     this.getIsinArray();
     this.selectedDepotName(this.formData.depotName);
+    this.selectedType(this.formData.type);
   }
 
   selectedIsin(selectedIsin: string) {
@@ -48,6 +55,25 @@ export class AddNewTransactionComponent implements OnInit {
 
   selectedType(selectedType: string) {
     this.formData.type = selectedType;
+    let indexOf:number = ['TransferToDepot', 'TransferFromDepot', 'DepotCost', 'Dividend'].indexOf(selectedType);
+    if(indexOf >= 0) {
+      this.isinInputDisabled = true;
+      this.securityNameInputDisabled = true;
+      this.numberInputDisabled = true;
+      this.priceInputDisabled = true;
+      this.expenseInputDisabled = true;
+    } else {
+      this.isinInputDisabled = false;
+      this.securityNameInputDisabled = false;
+      this.numberInputDisabled = false;
+      this.priceInputDisabled = false;
+      this.expenseInputDisabled = false;
+    }
+    if('Dividend' === selectedType) {
+      this.isinInputDisabled = false;
+      this.securityNameInputDisabled = false;
+      this.numberInputDisabled = false;
+    }
     console.log(selectedType);
   }
 
