@@ -1,58 +1,122 @@
-<h4>Allocations</h4>
-<hr>
+<div class="container">
+  <h4>Allocations</h4>
+  <hr />
 
-<div>
-<input [(ngModel)]="income" type="number" disabled="{{!isUpdatingIncome}}"/>
-<button type="button" (click)="isUpdatingIncome = true" *ngIf="!isUpdatingIncome">Change income</button>
-<button type="button" (click)="postIncome()" *ngIf="isUpdatingIncome">Save</button>
+  <div class="row">
+    <div class="col-sm-3 form-group">
+      <div class="input-group">
+        <input [(ngModel)]="income" type="number" disabled="{{ !isUpdatingIncome }}" class="form-control" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-warning" (click)="isUpdatingIncome = true" *ngIf="!isUpdatingIncome">
+            Change income
+          </button>
+          <button type="button" class="btn btn-primary" (click)="postIncome()" *ngIf="isUpdatingIncome">
+            Save
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-3 form-group">
+      <div class="input-group">
+        <input [(ngModel)]="allocation.investment" type="number" disabled="{{ !isUpdatingInvestment }}"
+          class="form-control" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-warning" (click)="isUpdatingInvestment = true"
+            *ngIf="!isUpdatingInvestment">
+            Change investment amount
+          </button>
+          <button type="button" class="btn btn-primary" (click)="isUpdatingInvestment = false"
+            *ngIf="isUpdatingInvestment">
+            Save
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- New row for fix costs and categories -->
+  <div class="row">
+    <!-- Fix Costs Column -->
+    <div class="col-md-6">
+      <p>Fix costs:</p>
+      <div *ngFor="let fixCost of allocation.fixCosts; index as i">
+        <ng-container [ngTemplateOutlet]="fixCost.updating ? updating : notUpdating"
+          [ngTemplateOutletContext]="{ fixCost: fixCost, i: i }"></ng-container>
+      </div>
+      <div>Sum: {{ fixCostSum }}</div>
+      <div *ngIf="addFixcost">
+        <input [(ngModel)]="newFixcost.fixCostName" type="text" placeholder="Name of the new fixcost"
+          class="form-control" />
+        <input [(ngModel)]="newFixcost.amount" type="number" class="form-control" />
+        <button type="button" class="btn btn-primary" (click)="submitNewFixcost()">
+          Ok
+        </button>
+      </div>
+      <button type="button" class="btn btn-info" (click)="addNewFixcost()">
+        Add new fixcost
+      </button>
+
+      <ng-template #notUpdating let-fixCost="fixCost" let-i="i">
+        <label class="control-label">{{ fixCost.fixCostName }}: {{ fixCost.amount }}
+        </label>
+        <button type="button" class="btn btn-warning" (click)="updateFixcost(i)">
+          Change
+        </button>
+      </ng-template>
+
+      <ng-template #updating let-fixCost="fixCost" let-i="i">
+        <input type="number" class="form-control" value="{{ fixCost.value }}" [(ngModel)]="newValue" />
+        <button type="button" class="btn btn-primary" (click)="submitUpdateFixcost(i)">
+          Ok
+        </button>
+      </ng-template>
+    </div>
+
+    <!-- Categories Column -->
+    <div class="col-md-6">
+      <p>Categories:</p>
+      <div *ngFor="let category of allocation.categories; index as i">
+        <ng-container [ngTemplateOutlet]="
+            category.updating ? updatingCategory : notUpdatingCategory
+          " [ngTemplateOutletContext]="{ category: category, i: i }"></ng-container>
+      </div>
+      <div>Sum: {{ categorySum }}</div>
+      <div *ngIf="addCategory">
+        <input [(ngModel)]="newCategory.categoryName" type="text" placeholder="Name of the new category"
+          class="form-control" />
+        <input [(ngModel)]="newCategory.budget" type="number" class="form-control" />
+        <button type="button" class="btn btn-primary" (click)="submitNewCategory()">
+          Ok
+        </button>
+      </div>
+      <button type="submit" class="btn btn-info" (click)="addNewCategory()">
+        Add new category
+      </button>
+
+      <ng-template #notUpdatingCategory let-category="category" let-i="i">
+        <label class="control-label">{{ category.categoryName }}: {{ category.budget }}
+        </label>
+        <button type="button" class="btn btn-warning" (click)="updateCategory(i)">
+          Change
+        </button>
+      </ng-template>
+
+      <ng-template #updatingCategory let-category="category" let-i="i">
+        <input type="number" class="form-control" value="{{ category.budget }}" [(ngModel)]="newValue" />
+        <button type="button" class="btn btn-primary" (click)="submitUpdateCategory(i)">
+          Ok
+        </button>
+      </ng-template>
+    </div>
+  </div>
+
+  <p>
+    Total sum:
+    {{ (fixCostSum + categorySum + allocation.investment).toFixed(2) }}
+  </p>
+
+  <button type="button" class="btn btn-success" (click)="submitAllocation()">
+    Save allocation
+  </button>
 </div>
-
-<div>
-<input [(ngModel)]="allocation.investment" type="number" disabled="{{!isUpdatingInvestment}}"/>
-<button type="button" (click)="isUpdatingInvestment = true" *ngIf="!isUpdatingInvestment">Change investment amount</button>
-<button type="button" (click)="isUpdatingInvestment = false" *ngIf="isUpdatingInvestment">Save</button>
-</div>
-
-<button type="button" (click)="submitAllocation()">Save allocation</button>
-
-<p>Fix costs:</p>
-<div *ngFor="let fixCost of allocation.fixCosts; index as i">
-    <ng-container [ngTemplateOutlet]="fixCost.updating ? updating : notUpdating" [ngTemplateOutletContext]="{fixCost:fixCost, i:i}"></ng-container>
-</div>
-<div>Sum: {{fixCostSum}}</div>
-<div *ngIf="addFixcost">
-    <input [(ngModel)]="newFixcost.fixCostName" type="text" placeholder="Name of the new fixcost"/> <input [(ngModel)]="newFixcost.amount" type="number"/> <button type="button" (click)="submitNewFixcost()">Ok</button>
-</div>
-<button type="button" (click)="addNewFixcost()">Add new fixcost</button>
-
-<ng-template #notUpdating let-fixCost="fixCost" let-i="i">
-    <label>{{fixCost.fixCostName}}: {{fixCost.amount}} </label> <button type="button" (click)="updateFixcost(i)">Change</button>
-</ng-template>
-
-<ng-template #updating let-fixCost="fixCost" let-i="i">
-    <input type="number" value={{fixCost.value}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateFixcost(i)">Ok</button>
-</ng-template>
-
-<br>
-
-<p>Categories:</p>
-<div *ngFor="let category of allocation.categories; index as i">
-    <ng-container [ngTemplateOutlet]="category.updating ? updatingCategory : notUpdatingCategory" [ngTemplateOutletContext]="{category:category, i:i}"></ng-container>
-</div>
-<div>Sum: {{categorySum}}</div>
-<div *ngIf="addCategory">
-    <input [(ngModel)]="newCategory.categoryName" type="text" placeholder="Name of the new category"/>
-    <input [(ngModel)]="newCategory.budget" type="number"/>
-    <button type="button" (click)="submitNewCategory()">Ok</button>
-</div>
-<button type="submit" (click)="addNewCategory()">Add new category</button>
-
-<ng-template #notUpdatingCategory let-category="category" let-i="i">
-    <label>{{category.categoryName}}: {{category.budget}} </label> <button type="button" (click)="updateCategory(i)">Change</button>
-</ng-template>
-
-<ng-template #updatingCategory let-category="category" let-i="i">
-    <input type="number" value={{category.budget}} [(ngModel)]="newValue"/> <button type="button" (click)="submitUpdateCategory(i)">Ok</button>
-</ng-template>
-
-<p>Total sum: {{(fixCostSum + categorySum + allocation.investment).toFixed(2)}}</p>
