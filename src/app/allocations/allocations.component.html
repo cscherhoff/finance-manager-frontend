@@ -39,7 +39,7 @@
   <div class="row">
     <!-- Fix Costs Column -->
     <div class="col-md-6">
-      <p>Fix costs:</p>
+      <h2>Fix costs:</h2>
       <div *ngFor="let fixCost of allocation.fixCosts; index as i">
         <ng-container [ngTemplateOutlet]="fixCost.updating ? updating : notUpdating"
           [ngTemplateOutletContext]="{ fixCost: fixCost, i: i }"></ng-container>
@@ -75,7 +75,7 @@
 
     <!-- Categories Column -->
     <div class="col-md-6">
-      <p>Categories:</p>
+      <h2>Categories:</h2>
       <div *ngFor="let category of allocation.categories; index as i">
         <ng-container [ngTemplateOutlet]="
             category.updating ? updatingCategory : notUpdatingCategory
